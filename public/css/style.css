@@ -1,0 +1,21 @@
+
+
+body {
+    background-color: rgb(255, 253, 234);
+    background-image: url('/images/bg-tile.jpg');
+}
+
+.jumbotron {
+    background-color: white;
+    background-image: url('/images/mall_bg.png');
+    text-align: center;
+    margin-top: 10px;
+}
+
+.jumbotron h1, .jumbotron h2{
+    text-shadow: 2px 2px #ffc1c1;
+}
+
+.card-header{
+    background-color: #ffc1c1;
+}
