@@ -51,6 +51,7 @@
                                 <input type="text" class="form-control" id="storeDescription">
                             </div>
                             <button type="submit" class="btn btn-primary submit">Update Store</button>
+                            <button type="button" class="btn btn-danger deleteStore">Delete Store</button>
                         </form>
                     </div>
                 </div>
@@ -101,30 +102,42 @@
                 .then((res) => res.json())
                 .then((data) => {
                     console.log('Successful POST request:', data);
-
-                    // if (data) {
-                    //     alert("It's Going Down! ... Store Added");
-                    // }
-                    // Clear the form when submitting
-                    // $("#storeID").val("");
-                    // $("#storeName").val("");
-                    // $("#storeDescription").val("");
-                    // $("#status").val("");
-
-                    // window.location.replace("/home");
+                    window.location.replace("/store/" + storeID);
 
                 })
                 .catch((error) => {
                     console.error('Error in POST request:', error);
                 });
 
-
         });
 
 
+        $(".deleteStore").on("click", function (event) {
+            event.preventDefault();
+
+            // Here we grab the form elements
+            var deleteStore = {
+                storeID: storeID,
+            };
+
+            fetch('/api/stores', {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(deleteStore),
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    console.log('Successful DELETE request:', data);
+                    window.location.replace("/home");
+                })
+                .catch((error) => {
+                    console.error('Error in DELETE request:', error);
+                });
+        });
 
     </script>
-    <!--<script src="js/addstore.js" type="text/javascript"></script>-->
 </body>
 
 </html>

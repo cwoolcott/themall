@@ -62,11 +62,6 @@ module.exports = function (app) {
             }
 
         }
-
-
-        // res.json(true);
-
-
     });
 
     app.get("/api/getstore/:storeID", function (req, res) {
@@ -83,11 +78,25 @@ module.exports = function (app) {
 
         }
 
+    });
 
 
 
+    app.delete("/api/stores", function (req, res) {
 
+        var storeDelete = req.body;
+        //we need to get the correct object
+        for (var i = 0; i < storeData.length; i++) {
+            if (storeData[i].storeID == storeDelete.storeID) {
+                //storeData[i].status = (storeData[i].status === 'open') ? 'closed' : 'open';
 
+                storeData.splice(i, 1);
+                res.json({});
+                break; //Stop this loop, we found it!
+
+            }
+
+        }
     });
 
 
